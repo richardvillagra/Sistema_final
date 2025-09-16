@@ -28,7 +28,7 @@
                 echo "<div class='alert alert-danger alert-dismissable'>
                 <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
                 <h4><i class='icon fa fa-times-circle'></i>Error al iniciar sesión</h4>
-                Usuario o contraseña incorrecta, vuelva a ingresar sus datos.
+                Usuario o contraseña incorrecta, vuelva a verificar sus datos.
                 </div>";
             }
             elseif($_GET['alert']==2){
