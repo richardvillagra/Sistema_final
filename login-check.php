@@ -20,8 +20,10 @@ if(!ctype_alnum($username) OR !ctype_alnum($password)){
             $_SESSION['name_user'] = $data['name_user'];
             $_SESSION['permisos_acceso'] = $data['permisos_acceso'];
 
-            echo "Existe el usuario sea bienvenido";
-        }else{
+            //echo "Existe el usuario sea bienvenido";
+            header("Location: main.php");
+        }
+        else{
             header("Location: index.php?alert=1");
         }
 }

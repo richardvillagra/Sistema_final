@@ -8,10 +8,10 @@
     <meta name="autor" content="Richard Villagra">
     <link rel="shortcut icon" href="assets/img/favicon.ico">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" Type="text/css">
-    <link rel="stylesheet" href="assets/plugin/font-awesome-4,6,3/css/font-awesome.min.css" Type="text/css">
+    <link rel="stylesheet" href="assets/plugins/font-awesome-4.6.3/css/font-awesome.min.css" Type="text/css">
     <link rel="stylesheet" href="assets/css/AdminLTE.min.css" Type="text/css">
     <link rel="stylesheet" href="assets/css/style.css" Type="text/css">
-    <title>Document</title>
+    <title>login | SysWeb</title>
 </head>
 <body>
     <div class="login-box">
