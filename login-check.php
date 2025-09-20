@@ -21,7 +21,7 @@ if(!ctype_alnum($username) OR !ctype_alnum($password)){
             $_SESSION['permisos_acceso'] = $data['permisos_acceso'];
 
             //echo "Existe el usuario sea bienvenido";
-            header("Location: main.php");
+            header("Location: main.php?module=start");
         }
         else{
             header("Location: index.php?alert=1");

@@ -38,6 +38,13 @@
                 Has cerrado tu sesión correctamente.
                 </div>";
             }
+            elseif($_GET['alert']==3){
+                echo "<div class='alert alert-success alert-dismissable'>
+                <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                <h4><i class='icon fa fa-times-circle'></i>Atención</h4>
+                Debes ingresar un usuario y contraseña para interactuar dentro del sistema.
+                </div>";
+            }
         ?>
         <div class="login-box-body">
             <p class="login-box-msg"><i class="fa fa-user icon-title"></i>Porfavor inicie sesión</p>

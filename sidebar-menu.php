@@ -14,12 +14,13 @@ if($_SESSION['permisos_acceso']=='Super Admin'){ ?>
         </li>
 
         <?php 
-            if($_GET['module']=="start"){ ?>
+            //if($_GET['module']=="start"){ ?>
                 <li class="treeview">
                     <a href="javascript:void(0);">
                         <i class="fa fa-file-text"></i><span>Referenciales Generales</span><i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
+                        <li><a href="#" target="_blank"><i class="fa fa-circle-o"></i>Departamento</a></li>
                         <li><a href="#" target="_blank"><i class="fa fa-circle-o"></i>Ciudad</a></li>
                     </ul>
                 </li>
@@ -29,9 +30,44 @@ if($_SESSION['permisos_acceso']=='Super Admin'){ ?>
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="#"><i class="fa fa-circle-o"></i>Deposito</a></li>
+                        <li><a href="#"><i class="fa fa-circle-o"></i>Proveedor</a></li>
+                        <li><a href="#"><i class="fa fa-circle-o"></i>Producto</a></li>
+                        <li><a href="#"><i class="fa fa-circle-o"></i>Unidad de medida</a></li>
                     </ul>
                 </li>
-        <?php } ?>
+                <li class="treeview">
+                    <a href="javascript:void(0);">
+                        <i class="fa fa-file-text"></i><span>Referenciales de Ventas</span><i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="#"><i class="fa fa-circle-o"></i>Clientes</a></li>
+                    </ul>
+                </li>
+
+                <?php 
+                    if($_GET['module']=="user" || $_GET['module']=="form_user"){ ?>
+                        <li class="active">
+                            <a href="?module=user"><i class="fa fa-user"></i>Administrar usuarios</a>
+                        </li>
+                <?php }
+                    else{ ?>
+                        <li>
+                            <a href="?module=user"><i class="fa fa-user"></i>Administrar usuarios</a>
+                        </li>
+                    <?php  }
+
+                    if($_GET['module']=="password"){ ?>
+                        <li class="active">
+                            <a href="?module=password"><i class="fa fa-user"></i>Cambiar Contraseña</a>
+                        </li>
+                <?php }
+                    else{ ?>
+                        <li>
+                            <a href="?module=password"><i class="fa fa-user"></i>Cambiar Contraseña</a>
+                        </li>
+                    <?php  }
+                ?>
+        <?php// } ?>
     </ul>
 <?php 
 }
