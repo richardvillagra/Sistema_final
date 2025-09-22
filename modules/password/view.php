@@ -45,22 +45,22 @@
                 <form role="form" class="form-horizontal" method="POST" action="modules/password/proces.php">
                     <div class="box-body">
                         <div class="form-group">
-                            <label class="col-sn-2 control-label">Contraseña Antigua</label>
-                            <div class="col-sn-5">
+                            <label class="col-sm-2 control-label">Contraseña Antigua</label>
+                            <div class="col-sm-5">
                                 <input type="password" class="form-control" name="old_pass" autocomplete="off" required>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sn-2 control-label">Contraseña Nueva</label>
-                            <div class="col-sn-5">
+                            <label class="col-sm-2 control-label">Contraseña Nueva</label>
+                            <div class="col-sm-5">
                                 <input type="password" class="form-control" name="new_pass" autocomplete="off" required>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sn-2 control-label">Repetir Contraseña</label>
-                            <div class="col-sn-5">
+                            <label class="col-sm-2 control-label">Repetir Contraseña</label>
+                            <div class="col-sm-5">
                                 <input type="password" class="form-control" name="retype_pass" autocomplete="off" required>
                             </div>
                         </div>

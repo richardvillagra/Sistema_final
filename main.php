@@ -5,7 +5,7 @@ session_start();
 <html lang="en">
 <head>
    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximun-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="description" content="Sysweb">
     <meta name="autor" content="Richard Villagra">
@@ -13,12 +13,56 @@ session_start();
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" Type="text/css">
     <link rel="stylesheet" href="assets/plugins/font-awesome-4.6.3/css/font-awesome.min.css" Type="text/css">
     <link rel="stylesheet" href="assets/css/AdminLTE.min.css" Type="text/css">
-    <link rel="stylesheet" href="assets/plugins/iCheck/square/blue.css" Type="text/css">
+    
     <link rel="stylesheet" href="assets/css/style.css" Type="text/css">
     <link rel="stylesheet" href="assets/plugins/datatables/dataTables.bootstrap.css" Type="text/css">
     <link rel="stylesheet" href="assets/plugins/datepicker/datepicker.min.css" Type="text/css">
     <link rel="stylesheet" href="assets/plugins/chosen/css/chosen.min.css" Type="text/css">
     <link rel="stylesheet" href="assets/css/skins/skin-blue.min.css" Type="text/css"><link rel="stylesheet" href="assets/css/style.css" Type="text/css">
+    
+    <!---->
+    <script language="javascript">
+      function getkey(e)
+      {
+        if (window.event)
+          return window.event.keyCode;
+        else if (e)
+          return e.which;
+        else
+          return null;
+      }
+
+      function goodchars(e, goods, field)
+      {
+        var key, keychar;
+        key = getkey(e);
+        if (key == null) return true;
+       
+        keychar = String.fromCharCode(key);
+        keychar = keychar.toLowerCase();
+        goods = goods.toLowerCase();
+       
+        // check goodkeys
+        if (goods.indexOf(keychar) != -1)
+            return true;
+        // control keys
+        if ( key==null || key==0 || key==8 || key==9 || key==27 )
+          return true;
+          
+        if (key == 13) {
+          var i;
+          for (i = 0; i < field.form.elements.length; i++)
+            if (field == field.form.elements[i])
+              break;
+          i = (i + 1) % field.form.elements.length;
+          field.form.elements[i].focus();
+          return false;
+        };
+        // else return false
+        return false;
+      }
+    </script>
+    
     <title>login | SysWeb</title>
 </head>
 <body class="skin-blue fixed">
@@ -85,5 +129,87 @@ session_start();
     <script src="assets/plugins/fastclick/fastclick.min.js" type="text/javascript"></script>
     <script src="assets/js/jquery.maskMoney.min.js" type="text/javascript"></script>
     <script src="assets/js/app.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+      $(function () {
+            // datepicker plugin
+            $('.date-picker').datepicker({
+                autoclose: true,
+                todayHighlight: true
+            });
+
+            // chosen select
+            $('.chosen-select').chosen({allow_single_deselect:true}); 
+            //resize the chosen on window resize
+            
+            // mask money
+            $('#harga_beli').maskMoney({thousands:'.', decimal:',', precision:0});
+            $('#harga_jual').maskMoney({thousands:'.', decimal:',', precision:0});
+
+            $(window)
+            .off('resize.chosen')
+            .on('resize.chosen', function() {
+                $('.chosen-select').each(function() {
+                    var $this = $(this);
+                    $this.next().css({'width': $this.parent().width()});
+                })
+            }).trigger('resize.chosen');
+            //resize chosen on sidebar collapse/expand
+            $(document).on('settings.ace.chosen', function(e, event_name, event_val) {
+                if(event_name != 'sidebar_collapsed') return;
+                    $('.chosen-select').each(function() {
+                    var $this = $(this);
+                    $this.next().css({'width': $this.parent().width()});
+                })
+            });
+    
+    
+            $('#chosen-multiple-style .btn').on('click', function(e){
+                var target = $(this).find('input[type=radio]');
+                var which = parseInt(target.val());
+                if(which == 2) $('#form-field-select-4').addClass('tag-input-style');
+                else $('#form-field-select-4').removeClass('tag-input-style');
+            });
+
+            // DataTables
+            $("#dataTables1").dataTable();
+            $('#dataTables2').dataTable({
+                "bPaginate": true,
+                "bLengthChange": false,
+                "bFilter": false,
+                "bSort": true,
+                "bInfo": true,
+                "bAutoWidth": false,
+
+                "language": idioma_español
+            });
+        });
+
+        var idioma_español= {
+            "sProcessing":     "Procesando...",
+            "sLengthMenu":     "Mostrar _MENU_ registros",
+            "sZeroRecords":    "No se encontraron resultados",
+            "sEmptyTable":     "Ningún dato disponible en esta tabla",
+            "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix":    "",
+            "sSearch":         "Buscar:",
+            "sUrl":            "",
+            "sInfoThousands":  ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+                "sFirst":    "Primero",
+                "sLast":     "Último",
+                "sNext":     "Siguiente",
+                "sPrevious": "Anterior"
+            },
+            "oAria": {
+                "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+            }
+        }
+
+    </script>
 </body>
 </html>
