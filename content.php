@@ -18,5 +18,12 @@
         elseif($_GET['module']=='form_user'){
             include "modules/user/form.php";
         }
+
+        elseif($_GET['module']=='perfil'){
+            include "modules/perfil/view.php";
+        }
+        elseif($_GET['module']=='form_perfil'){
+            include "modules/perfil/form.php";
+        }
     }
 ?>

@@ -38,7 +38,7 @@
         </li>
         <li class="user-footer">
             <div class="pull-left">
-                <a style="width:80px" href="?module=profile" class="btn btn-default btn-flat">Perfil</a>
+                <a style="width:80px" href="?module=perfil" class="btn btn-default btn-flat">Perfil</a>
             </div>
             
             <div class="pull-right">

@@ -16,7 +16,7 @@
                 }
                 elseif($_GET['alert']==1){
                     echo "<div class='alert alert-succes aler-dismissable'>
-                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true>&times;</button>
+                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
                         <h4><i class='icon fa fa-check-circle'></i>Exito!</h4>
                         Los nuevos datos de usuario se han registrado correctamente
                     </div>";
@@ -24,7 +24,7 @@
 
                 elseif($_GET['alert']==2){
                     echo "<div class='alert alert-succes aler-dismissable'>
-                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true>&times;</button>
+                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
                         <h4><i class='icon fa fa-check-circle'></i>Exito!</h4>
                         Los datos de usuario se han editado correctamente
                     </div>";
@@ -32,7 +32,7 @@
 
                 elseif($_GET['alert']==3){
                     echo "<div class='alert alert-succes aler-dismissable'>
-                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true>&times;</button>
+                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
                         <h4><i class='icon fa fa-check-circle'></i>Exito!</h4>
                         El usuario ha sido activado correctamente
                     </div>";
@@ -40,15 +40,15 @@
 
                 elseif($_GET['alert']==4){
                     echo "<div class='alert alert-danger aler-dismissable'>
-                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true>&times;</button>
+                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
                         <h4><i class='icon fa fa-check-circle'></i>Exito!</h4>
-                        El usuario ha sido bloqeuado correctamente
+                        El usuario ha sido bloqueado correctamente
                     </div>";
                 }
 
                 elseif($_GET['alert']==5){
                     echo "<div class='alert alert-danger aler-dismissable'>
-                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true>&times;</button>
+                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
                         <h4><i class='icon fa fa-times-circle'></i>Error!</h4>
                         Asegurese de que la imagen es del formato indicado.
                     </div>";
@@ -56,7 +56,7 @@
 
                 elseif($_GET['alert']==6){
                     echo "<div class='alert alert-danger aler-dismissable'>
-                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true>&times;</button>
+                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
                         <h4><i class='icon fa fa-times-circle'></i>Error!</h4>
                         El archivo debe ser menor a 1 MB.
                     </div>";
@@ -64,12 +64,13 @@
 
                 elseif($_GET['alert']==7){
                     echo "<div class='alert alert-danger aler-dismissable'>
-                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true>&times;</button>
+                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
                         <h4><i class='icon fa fa-times-circle'></i>Error!</h4>
                         Asegurese de que el tipo de archivo es: *.JPEG *.JPEG *.PNG.
                     </div>";
                 }
             ?>
+            
             <!-- Aplicar datatables -->
             <div class="box box-primary">
                 <div class="box-body">
@@ -106,13 +107,13 @@
                                         <div>";
                                         if($data['status']=='activo'){ ?>
                                             <a data-toggle="tooltip" data-placement="top" title="Bloqueado" style="margin-rigth:5px" 
-                                                class="btn btn-warning btn-sm" href="modules/user/proces.php?act=off&id="<?php echo $data['id_user'];?>>
+                                                class="btn btn-warning btn-sm" href="modules/user/proces.php?act=off&id=<?php echo $data['id_user'];?>">
                                                 <i class="glyphicon glyphicon-off"></i>
                                             </a>
-                                        <?php } else{ ?>
+                                        <?php } else { ?>
                                             <a data-toggle="tooltip" data-placement="top" title="Bloqueado" style="margin-rigth:5px" 
-                                                class="btn btn-warning btn-sm" href="modules/user/proces.php?act=on&id="<?php echo $data['id_user'];?>>
-                                                <i class="glyphicon glyphicon-off"></i>
+                                                class="btn btn-warning btn-sm" href="modules/user/proces.php?act=on&id=<?php echo $data['id_user'];?>">
+                                                <i class="glyphicon glyphicon-ok"></i>
                                             </a>
                                         <?php }
                                         
