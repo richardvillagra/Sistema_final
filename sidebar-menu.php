@@ -21,7 +21,7 @@ if($_SESSION['permisos_acceso']=='Super Admin'){ ?>
                         <i class="fa fa-file-text"></i><span>Referenciales Generales</span><i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#" target="_blank"><i class="fa fa-circle-o"></i>Departamento</a></li>
+                        <li><a href="?module=departamento"><i class="fa fa-circle-o"></i>Departamento</a></li>
                         <li><a href="#" target="_blank"><i class="fa fa-circle-o"></i>Ciudad</a></li>
                     </ul>
                 </li>
@@ -93,7 +93,7 @@ elseif($_SESSION['permisos_acceso']=='Compras'){ ?>
                         <i class="fa fa-file-text"></i><span>Referenciales Generales</span><i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#" target="_blank"><i class="fa fa-circle-o"></i>Departamento</a></li>
+                        <li><a href="?module=departamento"><i class="fa fa-circle-o"></i>Departamento</a></li>
                         <li><a href="#" target="_blank"><i class="fa fa-circle-o"></i>Ciudad</a></li>
                     </ul>
                 </li>
@@ -143,7 +143,7 @@ elseif($_SESSION['permisos_acceso']=='Ventas'){?>
                         <i class="fa fa-file-text"></i><span>Referenciales Generales</span><i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#" target="_blank"><i class="fa fa-circle-o"></i>Departamento</a></li>
+                        <li><a href="?module=departamento"><i class="fa fa-circle-o"></i>Departamento</a></li>
                         <li><a href="#" target="_blank"><i class="fa fa-circle-o"></i>Ciudad</a></li>
                     </ul>
                 </li>

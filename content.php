@@ -25,5 +25,12 @@
         elseif($_GET['module']=='form_perfil'){
             include "modules/perfil/form.php";
         }
+
+        elseif($_GET['module']=='departamento'){
+            include "modules/departamento/view.php";
+        }
+        elseif($_GET['module']=='form_departamento'){
+            include "modules/departamento/form.php";
+        }
     }
 ?>
