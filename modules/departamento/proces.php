@@ -36,15 +36,15 @@
                 }
             }
         }
-        elseif($_GET['act']== 'delete'){
+        elseif($_GET['act']=='delete'){
             if(isset($_GET['id_departamento'])){
                 $codigo = $_GET['id_departamento'];
 
-                $query = mysqli_query($mysqli, "DELETE FROM departamento WHERE id_departamento = '$codigo'") 
+                $query = mysqli_query($mysqli, "DELETE FROM departamento WHERE id_departamento = $codigo") 
                 or die('error'.mysqli_error($mysqli));
                 if($query){
                     header("Location: ../../main.php?module=departamento&alert=3");
-                }else{
+                }else {
                     header("Location: ../../main.php?module=departamento&alert=4");
                 }
             }
