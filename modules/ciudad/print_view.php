@@ -32,9 +32,9 @@ $count = mysqli_num_rows($query);
                 <table width="100%" border="0.3" cellpadding="0" cellspacing="0" align="center">
                     <thead style="background:#e8ecee">
                         <tr class="table-title">
-                            <th height="20" width="100" align="center" valign="middle"><small>Código</small></th>
-                            <th height="30" width="150" align="center" valign="middle"><small>Ciudad</small></th>
-                            <th height="30" width="150" align="center" valign="middle"><small>Departamento</small></th>
+                            <th height="20" align="center" valign="middle"><small>Código</small></th>
+                            <th height="30" align="center" valign="middle"><small>Ciudad</small></th>
+                            <th height="30" align="center" valign="middle"><small>Departamento</small></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -45,9 +45,9 @@ $count = mysqli_num_rows($query);
                             $dep_descripcion = $data['dep_descripcion'];
 
                             echo "<tr>
-                                    <td width='100%' align='left'>$codigo</td>
-                                    <td width='150%' align='left'>$descrip_ciudad</td>
-                                    <td width='150%' align='left'>$dep_descripcion</td>
+                                    <td width='100' align='left'>$codigo</td>
+                                    <td width='150' align='left'>$descrip_ciudad</td>
+                                    <td width='150' align='left'>$dep_descripcion</td>
                                   </tr>";
                         }
                         ?>
