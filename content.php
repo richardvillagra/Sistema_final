@@ -46,5 +46,12 @@
         elseif($_GET['module']=='form_clientes'){
             include "modules/clientes/form.php";
         }
+
+        elseif($_GET['module']=='compras'){
+            include "modules/compras/view.php";
+        }
+        elseif($_GET['module']=='form_compras'){
+            include "modules/compras/form.php";
+        }
     }
 ?>
