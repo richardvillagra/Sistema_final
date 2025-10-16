@@ -53,5 +53,26 @@
         elseif($_GET['module']=='form_compras'){
             include "modules/compras/form.php";
         }
+        
+        elseif($_GET['module']=='deposito'){
+            include "modules/deposito/view.php";
+        }
+        elseif($_GET['module']=='form_deposito'){
+            include "modules/deposito/form.php";
+        }
+
+        elseif($_GET['module']=='proveedor'){
+            include "modules/proveedor/view.php";
+        }
+        elseif($_GET['module']=='form_proveedor'){
+            include "modules/proveedor/form.php";
+        }
+
+        elseif($_GET['module']=='producto'){
+            include "modules/producto/view.php";
+        }
+        elseif($_GET['module']=='form_producto'){
+            include "modules/producto/form.php";
+        }
     }
 ?>

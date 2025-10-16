@@ -30,9 +30,9 @@ if($_SESSION['permisos_acceso']=='Super Admin'){ ?>
                         <i class="fa fa-file-text"></i><span>Referenciales de compras</span><i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa fa-circle-o"></i>Deposito</a></li>
-                        <li><a href="#"><i class="fa fa-circle-o"></i>Proveedor</a></li>
-                        <li><a href="#"><i class="fa fa-circle-o"></i>Producto</a></li>
+                        <li><a href="?module=deposito"><i class="fa fa-circle-o"></i>Deposito</a></li>
+                        <li><a href="?module=proveedor"><i class="fa fa-circle-o"></i>Proveedor</a></li>
+                        <li><a href="?module=producto"><i class="fa fa-circle-o"></i>Producto</a></li>
                         <li><a href="#"><i class="fa fa-circle-o"></i>Unidad de medida</a></li>
                     </ul>
                 </li>
@@ -102,8 +102,8 @@ elseif($_SESSION['permisos_acceso']=='Compras'){ ?>
                         <i class="fa fa-file-text"></i><span>Referenciales de compras</span><i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa fa-circle-o"></i>Deposito</a></li>
-                        <li><a href="#"><i class="fa fa-circle-o"></i>Proveedor</a></li>
+                        <li><a href="?module=deposito"><i class="fa fa-circle-o"></i>Deposito</a></li>
+                        <li><a href="?module=proveedor"><i class="fa fa-circle-o"></i>Proveedor</a></li>
                         <li><a href="#"><i class="fa fa-circle-o"></i>Producto</a></li>
                         <li><a href="#"><i class="fa fa-circle-o"></i>Unidad de medida</a></li>
                     </ul>
