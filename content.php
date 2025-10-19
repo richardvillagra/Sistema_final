@@ -74,5 +74,9 @@
         elseif($_GET['module']=='form_producto'){
             include "modules/producto/form.php";
         }
+
+        elseif($_GET['module']=='stock'){
+            include "modules/stock/view.php";
+        }
     }
 ?>

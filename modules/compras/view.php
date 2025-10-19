@@ -33,6 +33,14 @@
                         Datos anulados correctamente.
                     </div>";
                 }
+
+                elseif($_GET['alert']==3){
+                    echo "<div class='alert alert-danger aler-dismissable'>
+                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                        <h4><i class='icon fa fa-check-circle'></i>Error!</h4>
+                        No se puede realizar la accion.
+                    </div>";
+                }
             ?>
             <div class="box box-primary">
                 <div class="box-body">
@@ -56,7 +64,7 @@
                         <tbody>
                             <?php
                                 $nr=1;
-                                $query = mysqli_query($mysqli, "SELECT * FROM v_compras") 
+                                $query = mysqli_query($mysqli, "SELECT * FROM v_compras WHERE estado='activo' ") 
                                 or die ('error'.mysqli_error($mysqli));
                                 
                                 while($data = mysqli_fetch_assoc($query)){

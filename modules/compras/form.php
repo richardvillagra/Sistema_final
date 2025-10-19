@@ -38,13 +38,13 @@
                                     <label class="col-sm-1 control-label">Fecha</label>
                                     <div class="col-sm-2">
                                         <input type="text" class="form-control date-picker" data-date-format="dd-mm-yyyy" name="fecha" autocomplete="off" 
-                                        value="<?php echo date("j/n/Y"); ?>" readonly>
+                                        value="<?php echo date("y-m-d"); ?>" readonly>
                                     </div>
                                     
                                     <label class="col-sm-1 control-label">Hora</label>
                                     <div class="col-sm-2">
-                                        <input type="text" class="form-control date-picker" data-date-format="H-mm-ss" name="Hora" autocomplete="off" 
-                                        value="<?php echo date("H:i:s"); ?>" readonly>
+                                        <input type="text" class="form-control date-picker" data-date-format="H-mm-ss" name="hora" autocomplete="off" 
+                                        value="<?php echo date("h:i:s"); ?>" readonly>
                                     </div>
                                 </div>
                                 
