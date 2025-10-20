@@ -58,7 +58,7 @@
                         </a>
                     </section>
                     <table id="dataTables1" class="table table-bordered table-striped table-hover">
-                        <h2>Lista de deposito</h2>
+                        <h2>Lista de producto</h2>
                         <thead>
                             <tr>
                                <th class="center">Codigo</th>
