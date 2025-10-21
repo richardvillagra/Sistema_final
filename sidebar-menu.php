@@ -33,7 +33,7 @@ if($_SESSION['permisos_acceso']=='Super Admin'){ ?>
                         <li><a href="?module=deposito"><i class="fa fa-circle-o"></i>Deposito</a></li>
                         <li><a href="?module=proveedor"><i class="fa fa-circle-o"></i>Proveedor</a></li>
                         <li><a href="?module=producto"><i class="fa fa-circle-o"></i>Producto</a></li>
-                        <li><a href="#"><i class="fa fa-circle-o"></i>Unidad de medida</a></li>
+                        <li><a href="?module=unidad"><i class="fa fa-circle-o"></i>Unidad de medida</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
@@ -104,8 +104,8 @@ elseif($_SESSION['permisos_acceso']=='Compras'){ ?>
                     <ul class="treeview-menu">
                         <li><a href="?module=deposito"><i class="fa fa-circle-o"></i>Deposito</a></li>
                         <li><a href="?module=proveedor"><i class="fa fa-circle-o"></i>Proveedor</a></li>
-                        <li><a href="#"><i class="fa fa-circle-o"></i>Producto</a></li>
-                        <li><a href="#"><i class="fa fa-circle-o"></i>Unidad de medida</a></li>
+                        <li><a href="?module=producto"><i class="fa fa-circle-o"></i>Producto</a></li>
+                        <li><a href="?module=unidad"><i class="fa fa-circle-o"></i>Unidad de medida</a></li>
                     </ul>
                 </li>
                     <?php

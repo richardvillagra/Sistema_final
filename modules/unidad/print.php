@@ -6,7 +6,7 @@ use Spipu\Html2Pdf\Html2Pdf;
 ob_start();
 include "print_view.php";
 $content = ob_get_clean();
-$nombrearchivo = 'report_prooducto.pdf';
+$nombrearchivo = 'report_proveedor.pdf';
 
 $html2pdf = new Html2Pdf();
 $html2pdf->writeHTML($content);

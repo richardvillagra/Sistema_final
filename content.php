@@ -82,6 +82,13 @@
             include "modules/producto/form.php";
         }
 
+        elseif($_GET['module']=='unidad'){
+            include "modules/unidad/view.php";
+        }
+        elseif($_GET['module']=='form_unidad'){
+            include "modules/unidad/form.php";
+        }
+
         elseif($_GET['module']=='stock'){
             include "modules/stock/view.php";
         }

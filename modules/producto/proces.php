@@ -28,43 +28,33 @@
             if(isset($_POST['Guardar'])){
                 if(isset($_POST['codigo'])){
                     $codigo = $_POST['codigo'];
-                    $razon_social = $_POST['razon_social'];
-                    $ruc = $_POST['ruc'];
+                    $cod_tipo_producto = $_POST['cod_tipo_prod'];
+                    $id_u_medida = $_POST['id_u_medida'];
+                    $p_descrip = $_POST['p_descrip'];
+                    $precio = $_POST['precio'];
 
-                    if(!empty($_POST['direccion'])){
-                        $direccion = $_POST['direccion'];
-                    }else{
-                        $direccion = "No se encuentran registros";
-                    }
-
-                    if(!empty($_POST['telefono'])){
-                        $telefono = $_POST['telefono'];
-                    }else{
-                        $telefono = 000;
-                    }
-
-                    $query = mysqli_query($mysqli, "UPDATE proveedor SET cod_proveedor = '$codigo', ruc = '$ruc', 
-                    direccion = '$direccion', telefono = '$telefono'
-                    WHERE cod_proveedor = '$codigo'") 
+                    $query = mysqli_query($mysqli, "UPDATE producto SET cod_producto = '$codigo', cod_tipo_prod = '$cod_tipo_producto', 
+                    id_u_medida = '$id_u_medida', p_descrip = '$p_descrip', precio = '$precio'
+                    WHERE cod_producto = '$codigo'") 
                     or die('error'.mysqli_error($mysqli));
                     if($query){
-                        header("Location: ../../main.php?module=proveedor&alert=2");
+                        header("Location: ../../main.php?module=producto&alert=2");
                     }else{
-                        header("Location: ../../main.php?module=proveedor&alert=4");
+                        header("Location: ../../main.php?module=producto&alert=4");
                     }
                 }
             }
         }
         elseif($_GET['act']== 'delete'){
-            if(isset($_GET['cod_proveedor'])){
-                $codigo = $_GET['cod_proveedor'];
+            if(isset($_GET['cod_producto'])){
+                $codigo = $_GET['cod_producto'];
 
-                $query = mysqli_query($mysqli, "DELETE FROM proveedor WHERE cod_proveedor = '$codigo'") 
+                $query = mysqli_query($mysqli, "DELETE FROM producto WHERE cod_producto = '$codigo'") 
                 or die('error'.mysqli_error($mysqli));
                 if($query){
-                    header("Location: ../../main.php?module=proveedor&alert=3");
+                    header("Location: ../../main.php?module=producto&alert=3");
                 }else{
-                    header("Location: ../../main.php?module=proveedor&alert=4");
+                    header("Location: ../../main.php?module=producto&alert=4");
                 }
             }
         }

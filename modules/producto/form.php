@@ -39,21 +39,16 @@
                                 <!-- Combo para seleccionar un tipo de producto -->
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Tipo de producto</label>
-                                    <div class="col-sm-5">
-                                        <select name="tipo_producto" class="form-control">
+                                    <div class="col-sm-3">
+                                        <select class="chosen-select" name="cod_tipo_prod" data-placeholder="-- Seleccionar Tipo de producto --" 
+                                        autocomplete="off" required>
                                             <option value=""></option>
                                             <?php
-                                                $query = mysqli_query($mysqli, "SELECT * FROM tipo_producto")
+                                                $query_prov = mysqli_query($mysqli, "SELECT cod_tipo_prod, t_p_descrip FROM tipo_producto ORDER BY cod_tipo_prod ASC")
                                                 or die('error'.mysqli_error($mysqli));
-                                                while($data2 = mysqli_fetch_assoc($query)){
-                                                    echo "<option value='".$data2['cod_tipo_prod']."'";
-                                                    if($_POST['tipo_producto']==$data2['cod_tipo_prod']){
-                                                        echo "selected";
-                                                        echo ">";
-                                                        echo $data2['t_p_descrip'];
-                                                        echo "</option>";
-                                                    }
-                                                }
+                                                while($data_prov = mysqli_fetch_assoc($query_prov)){
+                                                    echo "<option value=\"$data_prov[cod_tipo_prod]\">$data_prov[t_p_descrip]</option>";
+                                                } 
                                             ?>
                                         </select>
                                     </div>
@@ -62,21 +57,16 @@
                                 <!-- Combo para seleccionar unidad de medida -->
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Unidad de medida</label>
-                                    <div class="col-sm-5">
-                                        <select name="u_medida" class="form-control">
+                                    <div class="col-sm-3">
+                                        <select class="chosen-select" name="id_u_medida" data-placeholder="-- Seleccionar Unidad de medida --" 
+                                        autocomplete="off" required>
                                             <option value=""></option>
                                             <?php
-                                                $query = mysqli_query($mysqli, "SELECT * FROM u_medida")
+                                                $query_prov = mysqli_query($mysqli, "SELECT id_u_medida, u_descrip FROM u_medida ORDER BY id_u_medida ASC")
                                                 or die('error'.mysqli_error($mysqli));
-                                                while($data3 = mysqli_fetch_assoc($query)){
-                                                    echo "<option value='".$data3['id_u_medida']."'";
-                                                    if($_POST['u_medida']==$data3['id_u_medida']){
-                                                        echo "selected";
-                                                        echo ">";
-                                                        echo $data3['u_descrip'];
-                                                        echo "</option>";
-                                                    }
-                                                }
+                                                while($data_prov = mysqli_fetch_assoc($query_prov)){
+                                                    echo "<option value=\"$data_prov[id_u_medida]\">$data_prov[u_descrip]</option>";
+                                                } 
                                             ?>
                                         </select>
                                     </div>
@@ -120,7 +110,7 @@
         }?>
         <section class="content-header">
             <h1>
-                <i class="fa fa-edit icon-title"></i>Modificar Proveedor
+                <i class="fa fa-edit icon-title"></i>Modificar Producto
             </h1>
             <ol class="breadcrumb">
                 <li><a href="?module=start"><i class="fa fa-home"></i>Inicio</a></li>
@@ -145,21 +135,16 @@
                                 <!-- Combo para seleccionar un tipo de producto -->
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Tipo de producto</label>
-                                    <div class="col-sm-5">
-                                        <select name="producto" class="form-control">
-                                            <option value="<?php $data['cod_producto']?>"><?php $data['t_p_descrip']?></option>
+                                    <div class="col-sm-3">
+                                        <select class="chosen-select" name="cod_tipo_prod" data-placeholder="-- Seleccionar Tipo de producto --" 
+                                        autocomplete="off" required>
+                                            <option value=""></option>
                                             <?php
-                                                $query = mysqli_query($mysqli, "SELECT * FROM departamento")
+                                                $query_prov = mysqli_query($mysqli, "SELECT cod_tipo_prod, t_p_descrip FROM tipo_producto ORDER BY cod_tipo_prod ASC")
                                                 or die('error'.mysqli_error($mysqli));
-                                                while($data2 = mysqli_fetch_assoc($query)){
-                                                    echo "<option value='".$data2['cod_producto']."'";
-                                                    if($_POST['producto']==$data2['cod_producto']){
-                                                        echo "selected";
-                                                        echo ">";
-                                                        echo $data2['t_p_descrip'];
-                                                        echo "</option>";
-                                                    }
-                                                }
+                                                while($data_prov = mysqli_fetch_assoc($query_prov)){
+                                                    echo "<option value=\"$data_prov[cod_tipo_prod]\">$data_prov[t_p_descrip]</option>";
+                                                } 
                                             ?>
                                         </select>
                                     </div>
@@ -168,21 +153,16 @@
                                 <!-- Combo para seleccionar unidad de medida -->
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Unidad de medida</label>
-                                    <div class="col-sm-5">
-                                        <select name="tipo" class="form-control">
-                                            <option value="<?php $data['id_u_medida']?>"><?php $data['u_descrip']?></option>
+                                    <div class="col-sm-3">
+                                        <select class="chosen-select" name="id_u_medida" data-placeholder="-- Seleccionar Unidad de medida --" 
+                                        autocomplete="off" required>
+                                            <option value=""></option>
                                             <?php
-                                                $query = mysqli_query($mysqli, "SELECT * FROM departamento")
+                                                $query_prov = mysqli_query($mysqli, "SELECT id_u_medida, u_descrip FROM u_medida ORDER BY id_u_medida ASC")
                                                 or die('error'.mysqli_error($mysqli));
-                                                while($data2 = mysqli_fetch_assoc($query)){
-                                                    echo "<option value='".$data2['id_u_medida']."'";
-                                                    if($_POST['tipo_']==$data2['id_u_medida']){
-                                                        echo "selected";
-                                                        echo ">";
-                                                        echo $data2['u_descrip'];
-                                                        echo "</option>";
-                                                    }
-                                                }
+                                                while($data_prov = mysqli_fetch_assoc($query_prov)){
+                                                    echo "<option value=\"$data_prov[id_u_medida]\">$data_prov[u_descrip]</option>";
+                                                } 
                                             ?>
                                         </select>
                                     </div>
@@ -191,15 +171,14 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Nombre de producto</label>
                                     <div class="col-sm-5">
-                                        <input type="text" class="form-control" name="p_descrip" placeholder="Ingresa el producto" autocomplete="off">
+                                        <input type="text" class="form-control" name="p_descrip" value="<?php echo $data['p_descrip'];?>" required>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Precio</label>
                                     <div class="col-sm-5">
-                                        <input type="text" class="form-control" name="precio" placeholder="Ingresa tu precio" autocomplete="off" 
-                                        onkeyPress="return goodchars(event, '0123456789', this)">
+                                        <input type="text" class="form-control" name="precio" value="<?php echo $data['precio'];?>" required>
                                     </div>
                                 </div>
 

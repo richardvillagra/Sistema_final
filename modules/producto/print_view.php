@@ -1,7 +1,17 @@
 <?php
 require_once "../../config/database.php";
 
-$query = mysqli_query($mysqli, "SELECT * FROM proveedor")
+$query = mysqli_query($mysqli, "SELECT cod_producto, 
+tp.cod_tipo_prod, 
+tp.t_p_descrip,
+u.id_u_medida, 
+u.u_descrip,
+p_descrip, 
+precio
+FROM producto pro
+JOIN tipo_producto tp, u_medida u
+WHERE pro.cod_tipo_prod = tp.cod_tipo_prod
+AND pro.id_u_medida = u.id_u_medida")
 or die('Error: '.mysqli_error($mysqli));
 
 $count = mysqli_num_rows($query);
@@ -11,7 +21,7 @@ $count = mysqli_num_rows($query);
 <html lang="es">
     <head>
         <meta charset="utf-8">
-        <title>Reporte de depositos</title>
+        <title>Reporte de Producto</title>
         <link rel="stylesheet" type="text/css" href="../../assets/img/favicon.ico">
     <head>
         <body>
@@ -19,7 +29,7 @@ $count = mysqli_num_rows($query);
                 <img src="../../images/asuncion.jpg">
             </div>
             <div>
-                Reporte de deposito
+                Reporte de Producto
             </div>
             <div align="center">
                 cantidad: <?php echo $count; ?>
@@ -30,27 +40,29 @@ $count = mysqli_num_rows($query);
                     <thead style="background:#e8ecee">
                         <tr class="table-title">
                             <th height="20" align="center" valign="middle"><small>Código</small></th>
-                            <th height="30" align="center" valign="middle"><small>Razon Social</small></th>
-                            <th height="30" align="center" valign="middle"><small>Ruc</small></th>
-                            <th height="30" align="center" valign="middle"><small>Direccion</small></th>
-                            <th height="30" align="center" valign="middle"><small>Telefono</small></th>
+                            <th height="30" align="center" valign="middle"><small>Tipo de producto</small></th>
+                            <th height="30" align="center" valign="middle"><small>Un. de medida</small></th>
+                            <th height="30" align="center" valign="middle"><small>Producto</small></th>
+                            <th height="30" align="center" valign="middle"><small>Precio</small></th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         while($data = mysqli_fetch_assoc($query)){
-                            $codigo = $data['cod_proveedor'];
-                            $razon = $data['razon_social'];
-                            $ruc = $data['ruc'];
-                            $direccion = $data['direccion'];
-                            $telefono = $data['telefono'];
+                            $codigo = $data['cod_producto'];
+                            $cod_tipo_prod = $data['cod_tipo_prod'];
+                            $t_p_descrip = $data['t_p_descrip'];
+                            $id_u_medida = $data['id_u_medida'];
+                            $u_descrip = $data['u_descrip'];
+                            $p_descrip = $data['p_descrip'];
+                            $precio = $data['precio'];
 
                             echo "<tr>
                                     <td width='100' align='left'>$codigo</td>
-                                    <td width='120' align='left'>$razon</td>
-                                    <td width='120' align='left'>$ruc</td>
-                                    <td width='120' align='left'>$direccion</td>
-                                    <td width='120' align='left'>$telefono</td>
+                                    <td width='150' align='left'>$t_p_descrip</td>
+                                    <td width='150' align='left'>$u_descrip</td>
+                                    <td width='150' align='left'>$p_descrip</td>
+                                    <td width='150' align='left'>$precio</td>
                                   </tr>";
                         }
                         ?>

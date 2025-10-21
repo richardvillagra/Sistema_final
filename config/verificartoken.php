@@ -3,8 +3,8 @@
     $email =$_POST['email'];
     $token =$_POST['token'];
     $codigo =$_POST['codigo'];
-    $res=$mysqli->query("select * from passwords where 
-        email='$email' and token='$token' and codigo=$codigo")or die($mysqli->error);
+    $res=$mysqli->query("SELECT * FROM passwords WHERE 
+        email='$email' AND token='$token' AND codigo=$codigo")or die($mysqli->error);
     $correcto=false;
     if(mysqli_num_rows($res) > 0){
         $fila = mysqli_fetch_row($res);
@@ -43,17 +43,17 @@
                     <h2>Restablecer Password</h2>
                     <div class="mb-3">
                         <label for="c" class="form-label">Nuevo Password</label>
-                        <input type="password" class="form-control" id="c" name="p1">
+                        <input type="password" class="form-control" id="c" name="new_pass">
                     
                     </div>
                     <div class="mb-3">
                         <label for="c" class="form-label">Confirmar Password</label>
-                        <input type="password" class="form-control" id="c" name="p2">
+                        <input type="password" class="form-control" id="c" name="retype_pass">
                         <input type="hidden" class="form-control" id="c" name="email" value="<?php echo $email?>">
 
                     </div>
                 
-                    <button type="submit" class="btn btn-primary">Cambiar</button>
+                    <input type="submit" class="btn btn-primary btn-submit" name="Cambiar" value="Cambiar">
                 </form>
             <?php }else{ ?>
                 <div class="alert alert-danger" >Código incorrecto o vencido</div>

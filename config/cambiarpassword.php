@@ -1,14 +1,14 @@
 <?php 
     include "./database.php";
     $email =$_POST['email'];
-    $p1 =$_POST['p1'];
-    $p2 =$_POST['p2'];
-    if($p1 == $p2){
-        $p1=sha1($p1);
-        $mysqli->query("UPDATE usuarios SET password='$p1' WHERE email='$email' ")or die('error'.$mysqli->connect_error);
-        echo "todo bien";
-        header("Location: ./index.php");
+    $new_pass =$_POST['new_pass'];
+    $p2 =$_POST['retype_pass'];
+    if($new_pass == $p2){
+        $new_pass = md5(mysqli_real_escape_string($mysqli, trim($_POST['new_pass'])));
+        $mysqli->query("UPDATE usuarios SET password = '$new_pass' WHERE email='$email' ")or die('error'.$mysqli->connect_error);
+        echo "<h1>todo bien</h1>";
+        header("Location: ../index.php");
     }else{
-        echo "no coinciden";
+        echo "<h1>no coinciden</h1>";
     }
 ?>
