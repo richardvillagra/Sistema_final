@@ -60,10 +60,16 @@
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
                 <br>
-                <a href="./restablecer.php">Olvidé mi contraseña</a> <br>
+                
                 <div class="row">
                     <div class="col-xs-12">
-                        <input type="submit" class="btn btn-prymary btn-lg btn-block btn-flat" name="login" value="Ingresar">
+                        <input type="submit" class="btn btn-primary btn-lg btn-block btn-flat" name="login" value="Ingresar">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12" style="margin-top:10px; text-align: center;">
+                        <a href="./restablecer.php">Olvidé mi contraseña</a> <br>
                     </div>
                 </div>
             </form>
