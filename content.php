@@ -54,6 +54,13 @@
             include "modules/compras/form.php";
         }
         
+        elseif($_GET['module']=='ventas'){
+            include "modules/ventas/view.php";
+        }
+        elseif($_GET['module']=='form_ventas'){
+            include "modules/ventas/form.php";
+        }
+
         elseif($_GET['module']=='deposito'){
             include "modules/deposito/view.php";
         }
