@@ -34,7 +34,7 @@ else{
                     VALUES($codigo_deposito, $codigo_producto, $cantidad)")
                     or die('Error: '.mysqli_error($mysqli));
                 }else {
-                    $actualizar_stock = mysqli_query($mysqli, "UPDATE stock SET cantidad = cantidad + $cantidad
+                    $actualizar_stock = mysqli_query($mysqli, "UPDATE stock SET cantidad = cantidad - $cantidad
                     WHERE cod_producto = $codigo_producto AND cod_deposito = $codigo_deposito")
                     or die('Error: '.mysqli_error($mysqli));
                 }
@@ -77,7 +77,7 @@ else{
                 $codigo_deposito = $row['cod_deposito'];
                 $cantidad = $row['det_cantidad'];
 
-                $actualizar_stock = mysqli_query($mysqli, "UPDATE stock SET cantidad = cantidad - $cantidad
+                $actualizar_stock = mysqli_query($mysqli, "UPDATE stock SET cantidad = cantidad + $cantidad
                 WHERE cod_producto = $codigo_producto AND cod_deposito = $codigo_deposito")
                 or die('Error: '.mysqli_error($mysqli));
             }
