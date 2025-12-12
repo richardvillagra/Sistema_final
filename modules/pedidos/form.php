@@ -5,7 +5,7 @@ if(empty($_SESSION['username']) && empty($_SESSION['password'])){
     echo "<meta http-equiv='refresh' content='0; url=index.php?alert=3'>";
 } else {
     $form = isset($_GET['form']) ? $_GET['form'] : '';
-    $cod_compra = isset($_GET['cod_compra']) ? intval($_GET['cod_compra']) : 0;
+    $cod_compra = isset($_GET['cod_compra']) ? intval($_GET['cod_comprqAa']) : 0;
     $compra = null;
 
     if($cod_compra){
@@ -23,16 +23,28 @@ if(empty($_SESSION['username']) && empty($_SESSION['password'])){
 
 <section class="content">
     <div class="box box-primary">
-        <div class="box-body">
-            <form method="post" action="modules/compras/proces_pedido.php?act=insert">
+        <form method="post" action="modules/pedidos/proces.php?act=insert">
+            <div class="box-body">
+                <?php 
+                // Método para generar código
+                    $query_id = mysqli_query($mysqli, "SELECT MAX(cod_pedido) as id FROM pedido")
+                    or die ('error'.mysqli_error($mysqli));
+                    $count = mysqli_num_rows($query_id);
+                    if($count <> 0){
+                        $data_id = mysqli_fetch_assoc($query_id);
+                        $codigo = $data_id['id']+1;
+                    } else{
+                        $codigo=1;
+                    }
+                ?>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label>Codigo Pedido</label>
-                            <input type="text" name="codigo_pedido" class="form-control" required>
+                            <input type="text" name="codigo" class="form-control" value="<?php echo $codigo;?>" readonly>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label>Nro Pedido</label>
                             <input type="text" name="nro_pedido" class="form-control" required>
@@ -41,14 +53,14 @@ if(empty($_SESSION['username']) && empty($_SESSION['password'])){
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label>Compra Relacionada</label>
                             <input type="hidden" name="cod_compra" value="<?php echo $cod_compra; ?>">
                             <input type="text" class="form-control" value="<?php echo $compra ? $compra['nro_factura'] : 'Ninguna'; ?>" disabled>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label>Proveedor</label>
                             <input type="hidden" name="codigo_proveedor" value="<?php echo $compra ? $compra['cod_proveedor'] : ''; ?>">
@@ -96,11 +108,11 @@ if(empty($_SESSION['username']) && empty($_SESSION['password'])){
                 <button type="submit" name="Guardar" class="btn btn-primary">
                     <i class="fa fa-save"></i> Guardar Pedido
                 </button>
-                <a href="?module=compras" class="btn btn-default">
+                <a href="?module=pedidos" class="btn btn-default">
                     <i class="fa fa-times"></i> Cancelar
                 </a>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
 </section>
 <?php

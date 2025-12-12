@@ -95,5 +95,15 @@
         elseif($_GET['module']=='stock'){
             include "modules/stock/view.php";
         }
+        elseif($_GET['module']=='form_stock'){
+            include "modules/stock/form.php";
+        }
+
+        elseif($_GET['module']=='pedidos'){
+            include "modules/pedidos/view.php";
+        }
+        elseif($_GET['module']=='form_pedidos'){
+            include "modules/pedidos/form.php";
+        }
     }
 ?>

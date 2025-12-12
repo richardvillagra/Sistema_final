@@ -8,9 +8,6 @@
         <a class="btn btn-primary btn-social pull-right" href="?module=form_compras&form=add" title="Agregar" data-toggle="tooltip">
             <i class="fa fa-plus"></i>Agregar
         </a>
-        <a class="btn btn-info btn-social pull-right" style="margin-right:8px;" href="?module=form_pedido&form=add" title="Agregar Pedido" data-toggle="tooltip">
-                <i class="fa fa-shopping-cart"></i>Agregar Pedido
-            </a>
     </h1>
 </section>
 

@@ -22,7 +22,7 @@
             </div>
         </div>
     
-        <h2>Formulario de movimiento</h2>
+        <h2>Formulario de Compras</h2>
         <!-- Fila principal de los bloques -->
         <div class="row">
             <!-- Bloque 1 Compras -->
@@ -47,27 +47,26 @@
             </div>
             <!-- Fin Bloque 1 Compras -->
 
-            <!-- Bloque 2 Ventas -->
+            <!-- Bloque Pedidos -->
             <div class="col-lg-4 col-xs-6">
-                <div style="background-color:#00a65a; color:#fff" class="small-box">
+                <div style="background-color:#3c8dbc; color:#fff" class="small-box">
                     <div class="inner">
-                        <p><strong>Ventas</strong></p>
+                        <p><strong>Pedidos</strong></p>
                         <ul>
-                            <li>Registrar</li>
-                            <li>Ventas de</li>
-                            <li>Productos</li>
+                            <li>Crear</li>
+                            <li>Listar</li>
+                            <li>Gestionar pedidos</li>
                         </ul>
-                        </p>
                     </div>
                     <div class="icon">
-                        <i class="fa fa-cart-plus"></i>
+                        <i class="fa fa-shopping-cart"></i>
                     </div>
-                    <a href="?module=ventas" class="small-box-footer" title="Registrar Ventas" data-toggle="tooltip">
+                    <a href="?module=pedidos" class="small-box-footer" title="Ver Pedidos" data-toggle="tooltip">
                         <i class="fa fa-plus"></i>
                     </a>
                 </div>
             </div>
-            <!-- Fin Bloque 2 Ventas -->
+            <!-- Fin Bloque Pedidos -->
 
             <!-- Bloque 3 Stock -->
             <div class="col-lg-4 col-xs-6">
@@ -96,6 +95,51 @@
                     <div class="card-header py-3 d-flex flex-row align-item-center justify-content-between"></div>
                 </div>
             </div>
+        </div>
+        <h2>Formulario de Ventas</h2>
+        <div class="row">
+             <!-- Bloque 2 Ventas -->
+            <div class="col-lg-4 col-xs-6">
+                <div style="background-color:#00a65a; color:#fff" class="small-box">
+                    <div class="inner">
+                        <p><strong>Ventas</strong></p>
+                        <ul>
+                            <li>Registrar</li>
+                            <li>Ventas de</li>
+                            <li>Productos</li>
+                        </ul>
+                        </p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-cart-plus"></i>
+                    </div>
+                    <a href="?module=ventas" class="small-box-footer" title="Registrar Ventas" data-toggle="tooltip">
+                        <i class="fa fa-plus"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- Fin Bloque 2 Ventas -->
+
+            <!-- Bloque Nota de Remisión -->
+            <div class="col-lg-4 col-xs-6">
+                <div style="background-color:#605ca8; color:#fff" class="small-box">
+                    <div class="inner">
+                        <p><strong>Nota de Remisión</strong></p>
+                        <ul>
+                            <li>Crear</li>
+                            <li>Imprimir</li>
+                            <li>Gestionar</li>
+                        </ul>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-truck"></i>
+                    </div>
+                    <a href="?module=remisiones" class="small-box-footer" title="Ver Notas de Remisión" data-toggle="tooltip">
+                        <i class="fa fa-plus"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- Fin Bloque Nota de Remisión -->
         </div> 
     </section>
 <?php } ?>
@@ -148,6 +192,27 @@
                 </div>
             </div>
             <!-- Fin Bloque 1 Compras -->
+
+             <!-- Bloque Pedidos -->
+            <div class="col-lg-4 col-xs-6">
+                <div style="background-color:#3c8dbc; color:#fff" class="small-box">
+                    <div class="inner">
+                        <p><strong>Pedidos</strong></p>
+                        <ul>
+                            <li>Crear</li>
+                            <li>Listar</li>
+                            <li>Gestionar pedidos</li>
+                        </ul>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-shopping-cart"></i>
+                    </div>
+                    <a href="?module=pedidos" class="small-box-footer" title="Ver Pedidos" data-toggle="tooltip">
+                        <i class="fa fa-plus"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- Fin Bloque Pedidos -->
 
             <!-- Bloque 3 Stock -->
             <div class="col-lg-4 col-xs-6">
@@ -228,6 +293,27 @@
                 </div>
             </div>
             <!-- Fin Bloque 2 Ventas -->
+
+             <!-- Bloque Nota de Remisión -->
+            <div class="col-lg-4 col-xs-6">
+                <div style="background-color:#605ca8; color:#fff" class="small-box">
+                    <div class="inner">
+                        <p><strong>Nota de Remisión</strong></p>
+                        <ul>
+                            <li>Crear</li>
+                            <li>Imprimir</li>
+                            <li>Gestionar</li>
+                        </ul>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-truck"></i>
+                    </div>
+                    <a href="?module=remisiones" class="small-box-footer" title="Ver Notas de Remisión" data-toggle="tooltip">
+                        <i class="fa fa-plus"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- Fin Bloque Nota de Remisión -->
 
             <!-- Bloque 3 Stock -->
             <div class="col-lg-4 col-xs-6">
