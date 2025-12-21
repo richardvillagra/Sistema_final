@@ -1,6 +1,6 @@
 <?php
-session_start();
-require_once "../../config/database.php";
+//session_start();
+//require_once "../../config/database.php";
 
 if(empty($_SESSION['username']) && empty($_SESSION['password'])){
     echo "<meta http-equiv='refresh' content='0; url=index.php?alert=3'>";
@@ -77,4 +77,20 @@ if(isset($_GET['act']) && $_GET['act']=='adjust' && isset($_POST['Guardar'])){
     }
 }
 
+if($_GET['act']== 'update'){
+            if(isset($_POST['Guardar'])){
+                if(isset($_POST['codigo'])){
+                    $codigo = $_POST['cod_deposito'];
+                    $descrip = $_POST['cod_producto'];
+
+                    $query = mysqli_query($mysqli, "UPDATE stock SET descrip = '$descrip' WHERE cantidad = '$codigo'") 
+                    or die('error'.mysqli_error($mysqli));
+                    if($query){
+                        header("Location: ../../main.php?module=stock&alert=2");
+                    }else{
+                        header("Location: ../../main.php?module=stock&alert=4");
+                    }
+                }
+            }
+        }
 ?>

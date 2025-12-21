@@ -72,9 +72,9 @@
             <div class="col-lg-4 col-xs-6">
                 <div style="background-color:#EF5800; color:#fff" class="small-box">
                     <div class="inner">
-                        <p><strong>Stock de productos</strong></p>
+                        <p><strong>Ajuste de Stock</strong></p>
                         <ul>
-                            <li>visualizar</li>
+                            <li>Modificar</li>
                             <li>Stock de</li>
                             <li>Productos</li>
                         </ul>
@@ -89,6 +89,48 @@
                 </div>
             </div>
             <!-- Fin Bloque 3 Stock -->
+
+            <!-- Bloque Orden de Compra -->
+            <div class="col-lg-4 col-xs-6">
+                <div style="background-color:#00a0d6; color:#fff" class="small-box">
+                    <div class="inner">
+                        <p><strong>Orden de Compra</strong></p>
+                        <ul>
+                            <li>Crear</li>
+                            <li>Listar</li>
+                            <li>Gestionar</li>
+                        </ul>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-file-text-o"></i>
+                    </div>
+                    <a href="?module=ordenes" class="small-box-footer" title="Ver Ordenes de Compra" data-toggle="tooltip">
+                        <i class="fa fa-plus"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- Fin Bloque Orden de Compra -->
+
+            <!-- Bloque Presupuesto -->
+            <div class="col-lg-4 col-xs-6">
+                <div style="background-color:#00a65a; color:#fff" class="small-box">
+                    <div class="inner">
+                        <p><strong>Presupuesto</strong></p>
+                        <ul>
+                            <li>Crear</li>
+                            <li>Listar</li>
+                            <li>Gestionar</li>
+                        </ul>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-file-text"></i>
+                    </div>
+                    <a href="?module=presupuestos" class="small-box-footer" title="Ver Presupuestos" data-toggle="tooltip">
+                        <i class="fa fa-plus"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- Fin Bloque Presupuesto -->
 
             <div class="col-xl-4 col-lg-5">
                 <div class="card no-shadow mb-4">
@@ -218,9 +260,9 @@
             <div class="col-lg-4 col-xs-6">
                 <div style="background-color:#EF5800; color:#fff" class="small-box">
                     <div class="inner">
-                        <p><strong>Stock de productos</strong></p>
+                        <p><strong>Ajuste de Stock</strong></p>
                         <ul>
-                            <li>visualizar</li>
+                            <li>Modificar</li>
                             <li>Stock de</li>
                             <li>Productos</li>
                         </ul>
@@ -235,6 +277,48 @@
                 </div>
             </div>
             <!-- Fin Bloque 3 Stock -->
+
+            <!-- Bloque Orden de Compra -->
+            <div class="col-lg-4 col-xs-6">
+                <div style="background-color:#00a0d6; color:#fff" class="small-box">
+                    <div class="inner">
+                        <p><strong>Orden de Compra</strong></p>
+                        <ul>
+                            <li>Crear</li>
+                            <li>Listar</li>
+                            <li>Gestionar</li>
+                        </ul>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-file-text-o"></i>
+                    </div>
+                    <a href="?module=ordenes" class="small-box-footer" title="Ver Ordenes de Compra" data-toggle="tooltip">
+                        <i class="fa fa-plus"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- Fin Bloque Orden de Compra -->
+
+            <!-- Bloque Presupuesto -->
+            <div class="col-lg-4 col-xs-6">
+                <div style="background-color:#00a65a; color:#fff" class="small-box">
+                    <div class="inner">
+                        <p><strong>Presupuesto</strong></p>
+                        <ul>
+                            <li>Crear</li>
+                            <li>Listar</li>
+                            <li>Gestionar</li>
+                        </ul>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-file-text"></i>
+                    </div>
+                    <a href="?module=presupuestos" class="small-box-footer" title="Ver Presupuestos" data-toggle="tooltip">
+                        <i class="fa fa-plus"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- Fin Bloque Presupuesto -->
 
             <div class="col-xl-4 col-lg-5">
                 <div class="card no-shadow mb-4">
@@ -319,9 +403,9 @@
             <div class="col-lg-4 col-xs-6">
                 <div style="background-color:#EF5800; color:#fff" class="small-box">
                     <div class="inner">
-                        <p><strong>Stock de productos</strong></p>
+                        <p><strong>Ajuste de Stock</strong></p>
                         <ul>
-                            <li>visualizar</li>
+                            <li>Modificar</li>
                             <li>Stock de</li>
                             <li>Productos</li>
                         </ul>

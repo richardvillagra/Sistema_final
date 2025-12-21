@@ -105,5 +105,12 @@
         elseif($_GET['module']=='form_pedidos'){
             include "modules/pedidos/form.php";
         }
+
+        elseif($_GET['module']=='remisiones'){
+            include "modules/remisiones/view.php";
+        }
+        elseif($_GET['module']=='form_remisiones'){
+            include "modules/remisiones/form.php";
+        }
     }
 ?>

@@ -63,6 +63,7 @@
                                 <th class="center">Producto</th>
                                 <th class="center">u. Medida</th>
                                 <th class="center">Cantidad</th>
+                                <th class="center">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -86,6 +87,11 @@
                                     <td class='center'>$p_descrip</td>
                                     <td class='center'>$u_descrip</td>
                                     <td class='center'>$cantidad</td>
+                                    <td class='center' width='80'>
+                                    <div>
+                                    <a data-toggle='tooltip' data-placement='top' title='Modificar datos de stock' style='margin-right:5px' 
+                                    class='btn btn-primary btn-sm' href='?module=form_stock&form=edit&id=$data[cod_producto]'>
+                                    <i class='glyphicon glyphicon-edit' style='color:#fff'></i></a>
                                     </tr>"?>
                                 <?php }
                             ?>

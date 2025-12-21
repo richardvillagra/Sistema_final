@@ -63,7 +63,7 @@ session_start();
       }
     </script>
     
-    <title>login | SysWeb</title>
+    <title>SysWeb</title>
 </head>
 <body class="skin-blue fixed">
     <div class="wrapper">
