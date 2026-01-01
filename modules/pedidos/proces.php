@@ -1,81 +1,93 @@
 <?php
-//session_start();
-//require_once "../../config/database.php";
+session_start();
+
+require_once "../../config/database.php";
 
 if(empty($_SESSION['username']) && empty($_SESSION['password'])){
     echo "<meta http-equiv='refresh' content='0; url=index.php?alert=3'>";
-    exit;
 }
+else{
+    if($_GET['act']=='insert'){
+        if(isset($_POST['Guardar'])){
+            $codigo = $_POST['codigo'];
+            $codigo_deposito = $_POST['codigo_deposito'];
+            //Insertar detalle de compra
 
-if(isset($_GET['act']) && $_GET['act']=='insert'){
-    if(isset($_POST['Guardar'])){
-        $cod_compra = isset($_POST['cod_compra']) ? intval($_POST['cod_compra']) : 0;
-        $cod_proveedor = isset($_POST['cod_proveedor']) ? intval($_POST['cod_proveedor']) : 0;
-        $cod_deposito = isset($_POST['cod_deposito']) ? intval($_POST['cod_deposito']) : 0;
-        $nro_pedido = mysqli_real_escape_string($mysqli, $_POST['nro_pedido']);
-        $fecha = mysqli_real_escape_string($mysqli, $_POST['fecha']);
-        $hora = mysqli_real_escape_string($mysqli, $_POST['hora']);
-        $suma_total = isset($_POST['suma_total']) ? floatval($_POST['suma_total']) : 0;
-        $usuario = $_SESSION['id_user'];
-        $estado = 'pendiente';
+            $sql = mysqli_query($mysqli, "SELECT * FROM producto, tmp WHERE producto.cod_producto=tmp.id_producto");
+            while($row = mysqli_fetch_assoc($sql)) {
+                $codigo_producto = $row['id_producto'];
+                $precio = $row['precio_tmp'];
+                $cantidad = $row['cantidad_tmp'];
 
-        mysqli_begin_transaction($mysqli);
+                //Insertar en la tabla detalle_pedido
+                $insert_detalle = mysqli_query($mysqli, "INSERT INTO detalle_pedido (cod_producto, cod_pedido, cod_deposito, precio, cantidad) 
+                VALUES ($codigo_producto, $codigo, $codigo_deposito, $precio, $cantidad)")
+                or die('Error: '.mysqli_error($mysqli));
 
-        try {
-            // calcular total si viene de compra
-            if($cod_compra && ($suma_total == 0 || $suma_total == '')){
-                $qtot = mysqli_query($mysqli, "SELECT SUM(cantidad * precio) AS total FROM detalle_compra WHERE cod_compra = $cod_compra");
-                $rt = mysqli_fetch_assoc($qtot);
-                $suma_total = floatval($rt['total']);
-            }
+                //Insertar stock en la tabla producto
+                $query = mysqli_query($mysqli, "SELECT * FROM stock WHERE cod_producto= $codigo_producto AND cod_deposito= $codigo_deposito")
+                or die('Error: '.mysqli_error($mysqli));
 
-            // insertar cabecera pedido
-            $sql = "INSERT INTO pedido (cod_compra, cod_proveedor, cod_deposito, id_user, nro_pedido, fecha, estado, hora, total_pedido)
-                    VALUES (".($cod_compra? $cod_compra : "NULL").", $cod_proveedor, $cod_deposito, $usuario, '$nro_pedido', '$fecha', '$estado', '$hora', $suma_total)";
-            if(!mysqli_query($mysqli, $sql)){
-                throw new Exception('Error insert pedido: '.mysqli_error($mysqli));
-            }
-            $cod_pedido = mysqli_insert_id($mysqli);
-
-            // copiar detalles desde detalle_compra
-            if($cod_compra){
-                $q = mysqli_query($mysqli, "SELECT cod_producto, cantidad, precio FROM detalle_compra WHERE cod_compra = $cod_compra");
-                while($r = mysqli_fetch_assoc($q)){
-                    $cod_producto = intval($r['cod_producto']);
-                    $cantidad = floatval($r['cantidad']);
-                    $precio = floatval($r['precio']);
-                    $subtotal = $cantidad * $precio;
-                    $ins = "INSERT INTO detalle_pedido (cod_pedido, cod_producto, cod_deposito, cantidad, precio, subtotal)
-                            VALUES ($cod_pedido, $cod_producto, $cod_deposito, $cantidad, $precio, $subtotal)";
-                    if(!mysqli_query($mysqli, $ins)){
-                        throw new Exception('Error insert detalle_pedido: '.mysqli_error($mysqli));
-                    }
+                if($count = mysqli_num_rows($query)==0){
+                    //Insertar
+                    $insertar_stock = mysqli_query($mysqli, "INSERT INTO stock(cod_deposito, cod_producto, cantidad)
+                    VALUES($codigo_deposito, $codigo_producto, $cantidad)")
+                    or die('Error: '.mysqli_error($mysqli));
+                }else {
+                    $actualizar_stock = mysqli_query($mysqli, "UPDATE stock SET cantidad = cantidad + $cantidad
+                    WHERE cod_producto = $codigo_producto AND cod_deposito = $codigo_deposito")
+                    or die('Error: '.mysqli_error($mysqli));
                 }
             }
+            //Insertar cabecera de compra
+            //Definir variables
+            $codigo_proveedor = $_POST['codigo_proveedor'];
+            $fecha = $_POST['fecha'];
+            $hora = $_POST['hora'];
+            $nro_factura = $_POST['nro_pedido'];
+            $suma_total = $_POST['suma_total'];
+            $estado = 'activo';
+            $usuario = $_SESSION['id_user'];
+            //Insertar
+            $query = mysqli_query($mysqli, "INSERT INTO pedido(cod_pedido, cod_proveedor, cod_deposito,
+            id_user, nro_pedido, fecha, estado, hora, total_pedido)
+            VALUES($codigo, $codigo_proveedor, $codigo_deposito, $usuario, '$nro_factura', '$fecha',
+            '$estado', '$hora',  $suma_total)")
+            or die('Error: '.mysqli_error($mysqli));
 
-            mysqli_commit($mysqli);
-            header("Location: ../../main.php?module=pedidos&alert=1");
-            exit;
+            if($query){
+                header("Location: ../../main.php?module=pedidos&alert=1");
+            } else{
+                header("Location: ../../main.php?module=pedidos&alert=3");
+            }
+        }
+    }
 
-        } catch(Exception $e){
-            mysqli_rollback($mysqli);
-            error_log($e->getMessage());
-            header("Location: ../../main.php?module=pedidos&alert=3");
-            exit;
+    elseif($_GET['act']=='anular'){
+        if(isset($_GET['cod_pedido'])){
+            $codigo = $_GET['cod_pedido'];
+            //Anular cabecera de pedido (cambiar estado a anulado)
+            $query = mysqli_query($mysqli, "UPDATE pedido SET estado = 'anulado' WHERE cod_pedido = $codigo")
+            or die('Error: '.mysqli_error($mysqli));
+
+            //Consultar detalle de pedido con el codigo que llega por GET
+            $sql = mysqli_query($mysqli, "SELECT * FROM detalle_pedido WHERE cod_pedido = $codigo");
+            while($row = mysqli_fetch_assoc($sql)){
+                $codigo_producto = $row['cod_producto'];
+                $codigo_deposito = $row['cod_deposito'];
+                $cantidad = $row['cantidad'];
+
+                $actualizar_stock = mysqli_query($mysqli, "UPDATE stock SET cantidad = cantidad - $cantidad
+                WHERE cod_producto = $codigo_producto AND cod_deposito = $codigo_deposito")
+                or die('Error: '.mysqli_error($mysqli));
+            }
+            if($query){
+                header("Location: ../../main.php?module=pedidos&alert=2");
+            } else{
+                header("Location: ../../main.php?module=pedidos&alert=3");
+            }
         }
     }
 }
-elseif(isset($_GET['act']) && $_GET['act']=='anular'){
-    if(isset($_GET['cod_pedido'])){
-        $codigo = intval($_GET['cod_pedido']);
-        $query = mysqli_query($mysqli, "UPDATE pedido SET estado = 'anulado' WHERE cod_pedido = $codigo")
-        or die('Error: '.mysqli_error($mysqli));
 
-        if($query){
-            header("Location: ../../main.php?module=pedidos&alert=2");
-        } else{
-            header("Location: ../../main.php?module=pedidos&alert=3");
-        }
-    }
-}
 ?>

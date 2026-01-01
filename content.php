@@ -112,5 +112,19 @@
         elseif($_GET['module']=='form_remisiones'){
             include "modules/remisiones/form.php";
         }
+
+        elseif($_GET['module']=='ordenes'){
+            include "modules/ordenes/view.php";
+        }
+        elseif($_GET['module']=='form_ordenes'){
+            include "modules/ordenes/form.php";
+        }
+
+        elseif($_GET['module']=='presupuestos'){
+            include "modules/presupuestos/view.php";
+        }
+        elseif($_GET['module']=='form_presupuestos'){
+            include "modules/presupuestos/form.php";
+        }
     }
 ?>
