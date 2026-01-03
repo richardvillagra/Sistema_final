@@ -94,11 +94,6 @@
                                             ?>
                                         </select>
                                     </div>
-
-                                    <label class="col-sm-2 control-label">Total</label>
-                                    <div class="col-sm-3">
-                                        <input type="number" step="0.01" class="form-control" name="suma_total" value="<?php echo ($pedido ? $pedido['total_pedido'] : '0'); ?>">
-                                    </div>
                                 </div>
                                 <hr>
 
@@ -131,8 +126,8 @@
     <?php } ?>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
 
     <script>
         $(document).ready(function(){
@@ -155,16 +150,23 @@
             });
         }
     </script>
-
     <script>
         function agregar (id){
-            var precio = $('#precio_'+id).val();
+            var precio_compra = $('#precio_compra_'+id).val();
             var cantidad = $('#cantidad_'+id).val();
-            //Validaciones
-            if (isNaN(cantidad) || cantidad == '' ){ alert('Cantidad inválida'); $('#cantidad_'+id).focus(); return false; }
-            if (isNaN(precio) || precio == '' ){ alert('Precio inválido'); $('#precio_'+id).focus(); return false; }
-
-            var parametros = {"id":id,"precio":precio,"cantidad":cantidad};
+            //Inicia validacion
+            if (isNaN(cantidad)){
+                alert('Esto no es un numero');
+                document.getElementById('cantidad_'+id).focus();
+                return false;
+            }
+            if (isNaN(precio_compra)){
+                alert('Esto no es un numero');
+                document.getElementById('precio_compra_'+id).focus();
+                return false;
+            }
+            //Fin validacion
+            var parametros = {"id":id,"precio_compra_":precio_compra,"cantidad":cantidad};
             $.ajax({
                 type: "POST",
                 url: "./ajax/agregar_pedido.php",

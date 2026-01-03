@@ -41,6 +41,13 @@
                         No se puede realizar la accion.
                     </div>";
                 }
+                elseif($_GET['alert']==4){
+                    echo "<div class='alert alert-success aler-dismissable'>
+                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                        <h4><i class='icon fa fa-check-circle'></i>Éxito!</h4>
+                        Pedido aceptado correctamente.
+                    </div>";
+                }
             ?>
             <div class="box box-primary">
                 <div class="box-body">
@@ -48,7 +55,7 @@
                         
                     </section>
                     <table id="dataTables1" class="table table-bordered table-striped table-hover">
-                        <h2>Lista de Compras</h2>
+                        <h2>Lista de Pedidos</h2>
                         <thead>
                             <tr>
                                 <th class="center">Codigo</th>
@@ -86,20 +93,27 @@
                                     <td class='center'>$hora</td>
                                     <td class='center'>$total_pedido</td>
                                     <td class='center'>$estado</td>
-                                    <td class='center' width='80'>
-                                    <div>";?>
-                                    <a data-toogle="tooltip" data-placement="top" title="Anular Compra" class="btn btn-danger btn-sm" 
-                                    href="modules/compras/proces.php?act=anular&cod_pedido=<?php echo $data['cod_pedido']; ?>"
+                                    <td class='center' width='120'>
+                                    <div>";
+                                       ?>
+                                       <a data-toggle="tooltip" data-placement="top" title="Aceptar Pedido" class="btn btn-success btn-sm"
+                                       href="module=presupuestos&form=aceptar&cod_pedido=<?php echo $data['cod_pedido']; ?>"
+                                       onclick="return confirm('¿Aceptar el pedido <?php echo $data['nro_pedido']; ?>?');">
+                                           <i style="color:#000" class="fa fa-check"></i>
+                                       </a>
+                                        <a data-toggle="tooltip" data-placement="top" title="Anular Pedido" class="btn btn-danger btn-sm" 
+                                   href="modules/pedidos/proces.php?act=anular&cod_pedido=<?php echo $data['cod_pedido']; ?>"
                                     onclick="return confirm('¿Estás seguro de anular la factura <?php echo $data['nro_pedido']; ?>?');">
-                                        <i style="color:#000" class="glyphicon glyphicon-trash"></i>
-                                    </a>
-                                    <a data-toggle="tooltip" data-placement="top" title="Imprimir Factura de pedido" class="btn btn-warning btn-sm"
-                                    href="modules/pedidos/print.php?act=imprimir&cod_pedido=<?php echo $data['cod_pedido']; ?>" target="_blank">
-                                        <i style="color:#000" class="fa fa-print"></i>
-                                    </a>
-                                    <?php echo " </div>
+                                            <i style="color:#000" class="glyphicon glyphicon-trash"></i>
+                                        </a>
+                                       <a data-toggle="tooltip" data-placement="top" title="Crear Presupuesto desde Pedido" class="btn btn-success btn-sm"
+                                       href="?module=presupuestos&form=add&cod_pedido=<?php echo $data['cod_pedido']; ?>"
+                                       onclick="return confirm('¿Crear presupuesto a partir del pedido <?php echo $data['nro_pedido']; ?>?');">
+                                           <i style="color:#000" class="fa fa-file-text"></i>
+                                       </a>
+                                    </div>
                                     </td>
-                                    </tr>"?>
+                                    </tr>
                                 <?php }
                             ?>
                         </tbody>

@@ -9,8 +9,10 @@ if(empty($_SESSION['username']) && empty($_SESSION['password'])){
 else{
     if($_GET['act']=='insert'){
         if(isset($_POST['Guardar'])){
-            $codigo = $_POST['codigo'];
-            $codigo_deposito = $_POST['codigo_deposito'];
+            $codigo = $_POST['codigo_pedido'];
+            $nro_pedido = $_POST['nro_pedido'];
+            $codigo_deposito = $_POST['cod_deposito'];
+            $codigo_proveedor = $_POST['cod_proveedor'];
             //Insertar detalle de compra
 
             $sql = mysqli_query($mysqli, "SELECT * FROM producto, tmp WHERE producto.cod_producto=tmp.id_producto");
@@ -41,7 +43,9 @@ else{
             }
             //Insertar cabecera de compra
             //Definir variables
-            $codigo_proveedor = $_POST['codigo_proveedor'];
+            $codigo = $_POST['codigo_pedido'];
+            $codigo_deposito = $_POST['cod_deposito'];
+            $codigo_proveedor = $_POST['cod_proveedor'];
             $fecha = $_POST['fecha'];
             $hora = $_POST['hora'];
             $nro_factura = $_POST['nro_pedido'];
@@ -83,6 +87,20 @@ else{
             }
             if($query){
                 header("Location: ../../main.php?module=pedidos&alert=2");
+            } else{
+                header("Location: ../../main.php?module=pedidos&alert=3");
+            }
+        }
+    }
+
+    elseif(isset($_GET['act']) && $_GET['act']=='aceptar'){
+        if(isset($_GET['cod_pedido'])){
+            $codigo = intval($_GET['cod_pedido']);
+            $query = mysqli_query($mysqli, "UPDATE pedido SET estado = 'aceptado' WHERE cod_pedido = $codigo")
+            or die('Error: '.mysqli_error($mysqli));
+
+            if($query){
+                header("Location: ../../main.php?module=pedidos&alert=4");
             } else{
                 header("Location: ../../main.php?module=pedidos&alert=3");
             }
