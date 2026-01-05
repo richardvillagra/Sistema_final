@@ -44,6 +44,7 @@ else{
             //Insertar cabecera de compra
             //Definir variables
             $codigo = $_POST['codigo_pedido'];
+            $id_cliente = $_POST['codigo_cliente'];
             $codigo_deposito = $_POST['cod_deposito'];
             $codigo_proveedor = $_POST['cod_proveedor'];
             $fecha = $_POST['fecha'];
@@ -53,9 +54,9 @@ else{
             $estado = 'activo';
             $usuario = $_SESSION['id_user'];
             //Insertar
-            $query = mysqli_query($mysqli, "INSERT INTO pedido(cod_pedido, cod_proveedor, cod_deposito,
+            $query = mysqli_query($mysqli, "INSERT INTO pedido(cod_pedido, id_cliente, cod_proveedor, cod_deposito,
             id_user, nro_pedido, fecha, estado, hora, total_pedido)
-            VALUES($codigo, $codigo_proveedor, $codigo_deposito, $usuario, '$nro_factura', '$fecha',
+            VALUES($codigo, $id_cliente, $codigo_proveedor, $codigo_deposito, $usuario, '$nro_factura', '$fecha',
             '$estado', '$hora',  $suma_total)")
             or die('Error: '.mysqli_error($mysqli));
 

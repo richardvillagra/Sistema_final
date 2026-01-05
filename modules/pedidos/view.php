@@ -107,7 +107,7 @@
                                             <i style="color:#000" class="glyphicon glyphicon-trash"></i>
                                         </a>
                                        <a data-toggle="tooltip" data-placement="top" title="Crear Presupuesto desde Pedido" class="btn btn-success btn-sm"
-                                       href="?module=presupuestos&form=add&cod_pedido=<?php echo $data['cod_pedido']; ?>"
+                                       href="?module=form_presupuestos&form=add&cod_pedido=<?php echo $data['cod_pedido']; ?>"
                                        onclick="return confirm('¿Crear presupuesto a partir del pedido <?php echo $data['nro_pedido']; ?>?');">
                                            <i style="color:#000" class="fa fa-file-text"></i>
                                        </a>

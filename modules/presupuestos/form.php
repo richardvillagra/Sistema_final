@@ -1,6 +1,4 @@
 <?php
-//session_start();
-//require_once "../../config/database.php";
 $form = isset($_GET['form']) ? $_GET['form'] : '';
   if($form == 'add'){
     $cod_pedido = isset($_GET['cod_pedido']) ? intval($_GET['cod_pedido']) : 0;
@@ -23,15 +21,29 @@ $form = isset($_GET['form']) ? $_GET['form'] : '';
 <form method="post" action="modules/presupuestos/proces.php?act=insert">
   
 <div class="form-group">
-    <label>Nro Presupuesto</label>
-  <input name="nro_presupuesto" class="form-control" required></div>
+    <label>Codigo</label>
+  <input name="cod_presu" class="form-control" required>
+</div>
+
+<div class="form-group">
+    <label>Nro Pedido</label>
+  <input name="cod_pedido" class="form-control" required>
+</div>
   
-  <div class="form-group"><label>Cliente</label>
-    <select name="id_cliente" class="form-control" required>
+  <div class="form-group">
+    <label>Cliente</label>
+    <select name="codigo_cliente" class="form-control" required>
       <option value="">-- Seleccionar --</option>
-      <?php $qp = mysqli_query($mysqli, "SELECT id_cliente, ci_ruc FROM cliente");
-            while($p = mysqli_fetch_assoc($qp)) echo "<option value='{$p['id_cliente']}'>".htmlspecialchars($p['ci_ruc'])."</option>"; ?>
+      <?php $qp = mysqli_query($mysqli, "SELECT id_cliente, cli_nombre, ci_ruc FROM clientes ORDER BY id_cliente ASC");
+            while($p = mysqli_fetch_assoc($qp)){ 
+            echo "<option value=\"$p[id_cliente]\">$p[ci_ruc] | $p[cli_nombre]</option>"; 
+            }?>  
     </select>
+  </div>
+
+  <div class="form-group">
+    <label>Nro Presupuesto</label>
+    <input name="nro_presupuesto" class="form-control" required>
   </div>
 
   <div class="form-group">
@@ -63,23 +75,25 @@ $form = isset($_GET['form']) ? $_GET['form'] : '';
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>Producto</th>
+                        <th class="text-center">Producto</th>
                         <th class="text-center">Cantidad</th>
-                        <th class="text-right">Precio</th>
-                        <th class="text-right">Subtotal</th>
+                        <th class="text-center">Precio</th>
                     </tr>
                 </thead>
                 <tbody>
                 <?php
-                    $qdet = mysqli_query($mysqli, "SELECT dp.cod_producto, pr.p_descrip, dp.cantidad, dp.precio, dp.subtotal FROM detalle_pedido dp LEFT JOIN producto pr ON dp.cod_producto = pr.cod_producto WHERE dp.cod_pedido = $cod_pedido")
+                    $qdet = mysqli_query($mysqli, "SELECT dp.cod_producto, pr.p_descrip, dp.cantidad, 
+                    dp.precio 
+                    FROM detalle_pedido dp 
+                    JOIN producto pr ON dp.cod_producto = pr.cod_producto 
+                    WHERE dp.cod_pedido = $cod_pedido")
                     or die('Error: '.mysqli_error($mysqli));
                     while($it = mysqli_fetch_assoc($qdet)){
                         echo "<tr>
-                                <td>".htmlspecialchars($it['p_descrip'])."</td>
-                                <td class='text-center'>".$it['cantidad']."</td>
-                                <td class='text-right'>".$it['precio']."</td>
-                                <td class='text-right'>".$it['subtotal']."</td>
-                              </tr>";
+                        <td>".htmlspecialchars($it['p_descrip'])."</td>
+                        <td class='text-center'>".$it['cantidad']."</td>
+                        <td class='text-right'>".$it['precio']."</td>
+                        </tr>";
                     }
                 ?>
                 </tbody>

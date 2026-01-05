@@ -71,7 +71,7 @@
                     o.fecha, o.total, o.estado, p.razon_social
                     FROM orden_compra o 
                     JOIN proveedor p ON o.cod_proveedor = p.cod_proveedor
-                    ORDER BY o.cod_orden DESC") or die(mysqli_error($mysqli));
+                    ORDER BY o.cod_orden ASC") or die(mysqli_error($mysqli));
                 while($r = mysqli_fetch_assoc($q)){
                     echo "<tr>
                             <td>{$r['cod_orden']}</td>

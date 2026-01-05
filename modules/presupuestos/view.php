@@ -5,10 +5,10 @@
 <section class="content-header">
   <ol class="breadcrumb">
         <li><a href="?module=start"><i class="fa fa-home"></i>Inicio</a></li>
-        <li class="active"><a href="?module=pedidos">Pedidos</a></li>
+        <li class="active"><a href="?module=presupuestos">Presupuesto</a></li>
     </ol><br><hr>
     <h1><i class="fa fa-file-text"></i> Presupuestos
-        <a class="btn btn-primary btn-social pull-right" href="?module=presupuestos&form=add"><i class="fa fa-plus"></i>Agregar</a>
+        <a class="btn btn-primary btn-social pull-right" href="?module=form_presupuestos&form=add"><i class="fa fa-plus"></i>Agregar</a>
     </h1>
 </section>
 <section class="content">
@@ -46,7 +46,7 @@
         FROM presupuesto p 
         JOIN clientes c 
         ON p.id_cliente = c.id_cliente
-          ORDER BY p.cod_presu DESC") or die(mysqli_error($mysqli));
+          ORDER BY p.cod_presu ASC") or die(mysqli_error($mysqli));
       while($r = mysqli_fetch_assoc($q)){
             $cod = $r['cod_presu'];
             $cliente = $r['ci_ruc'];
@@ -70,7 +70,7 @@
                       <i class='fa fa-check'></i>
                     </a>
                     <a class='btn btn-info btn-sm' 
-                    href='?module=presupuestos&form=view&cod_presupuesto=<?php echo $r['cod_presu']; ?>'>
+                    href='modules/presupuestos/vista.php?act=vista&cod_presupuesto=<?php echo $r['cod_presu']; ?>'>
                     <i class='fa fa-eye'></i>
                     </a>
                     <a class='btn btn-danger btn-sm' 
