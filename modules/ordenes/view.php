@@ -67,9 +67,11 @@
                 </thead>
                 <tbody>
                 <?php
-                $q = mysqli_query($mysqli, "SELECT o.cod_orden, o.nro_orden, o.fecha, o.total, o.estado, p.razon_social
-                                            FROM orden_compra o LEFT JOIN proveedor p ON o.cod_proveedor = p.cod_proveedor
-                                            ORDER BY o.cod_orden DESC") or die(mysqli_error($mysqli));
+                $q = mysqli_query($mysqli, "SELECT o.cod_orden, o.nro_orden, 
+                    o.fecha, o.total, o.estado, p.razon_social
+                    FROM orden_compra o 
+                    JOIN proveedor p ON o.cod_proveedor = p.cod_proveedor
+                    ORDER BY o.cod_orden DESC") or die(mysqli_error($mysqli));
                 while($r = mysqli_fetch_assoc($q)){
                     echo "<tr>
                             <td>{$r['cod_orden']}</td>

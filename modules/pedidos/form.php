@@ -37,7 +37,7 @@
                                         if($qped) $pedido = mysqli_fetch_assoc($qped);
                                     }
                                 ?>
-
+                                <!-- formulario de registro -->
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Código</label>
                                     <div class="col-sm-2">
@@ -57,6 +57,7 @@
                                     </div>
                                 </div>
                                 
+                                <!-- proveedor -->
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Proveedor</label>
                                     <div class="col-sm-3">
@@ -90,6 +91,23 @@
                                                 or die('error'.mysqli_error($mysqli));
                                                 while($data_dep = mysqli_fetch_assoc($query_dep)){
                                                     echo "<option value=\"$data_dep[cod_deposito]\">$data_dep[cod_deposito] | $data_dep[descrip]</option>";
+                                                } 
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Clientes</label>
+                                    <div class="col-sm-3">
+                                        <select class="chosen-select" name="codigo_cliente" data-placeholder="-- Seleccionar Cliente --" 
+                                        autocomplete="off" required>
+                                            <option value=""></option>
+                                            <?php
+                                                $query_cli = mysqli_query($mysqli, "SELECT id_cliente, cli_nombre, ci_ruc FROM clientes ORDER BY id_cliente ASC")
+                                                or die('error'.mysqli_error($mysqli));
+                                                while($data_cli = mysqli_fetch_assoc($query_cli)){
+                                                    echo "<option value=\"$data_cli[id_cliente]\">$data_cli[cli_nombre] | $data_cli[ci_ruc]</option>";
                                                 } 
                                             ?>
                                         </select>

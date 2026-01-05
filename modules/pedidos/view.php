@@ -58,8 +58,8 @@
                         <h2>Lista de Pedidos</h2>
                         <thead>
                             <tr>
-                                <th class="center">Codigo</th>
                                 <th class="center">Nro. Pedido</th>
+                                <th class="center">Cliente</th>
                                 <th class="center">Proveedor</th>
                                 <th class="center">Fecha</th>
                                 <th class="center">Hora</th>
@@ -71,13 +71,13 @@
                         <tbody>
                             <?php
                                 $nr=1;
-                                $query = mysqli_query($mysqli, "SELECT * FROM v_pedidos WHERE estado='activo' ") 
+                                $query = mysqli_query($mysqli, "SELECT * FROM v_pedidos JOIN v_clientes ON v_pedidos.id_cliente = v_clientes.id_cliente WHERE estado='activo' ") 
                                 or die ('error'.mysqli_error($mysqli));
                                 
                                 while($data = mysqli_fetch_assoc($query)){
                                     $cod = $data['cod_pedido'];
+                                    $cliente = $data['cli_nombre'];
                                     $proveedor = $data['razon_social'];
-                                    //$compra = $data['cod_compra'];
                                     $nro_pedido = $data['nro_pedido'];
                                     $fecha = $data['fecha'];
                                     $hora = $data['hora'];
@@ -86,8 +86,8 @@
 
 
                                     echo "<tr>
-                                    <td class='center'>$cod</td>
                                     <td class='center'>$nro_pedido</td>
+                                    <td class='center'>$cliente</td>
                                     <td class='center'>$proveedor</td>
                                     <td class='center'>$fecha</td>
                                     <td class='center'>$hora</td>
@@ -97,7 +97,7 @@
                                     <div>";
                                        ?>
                                        <a data-toggle="tooltip" data-placement="top" title="Aceptar Pedido" class="btn btn-success btn-sm"
-                                       href="module=presupuestos&form=aceptar&cod_pedido=<?php echo $data['cod_pedido']; ?>"
+                                       href="main.php?module=presupuestos&form_presupuestos=aceptar&cod_pedido=<?php echo $data['cod_pedido']; ?>"
                                        onclick="return confirm('¿Aceptar el pedido <?php echo $data['nro_pedido']; ?>?');">
                                            <i style="color:#000" class="fa fa-check"></i>
                                        </a>
