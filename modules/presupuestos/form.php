@@ -92,7 +92,7 @@ $form = isset($_GET['form']) ? $_GET['form'] : '';
 
   <div class="form-group">
     <label>Total</label>
-    <input type="number" step="0.01" name="total" class="form-control" value="0" required>
+    <input type="number" step="0.01" name="suma_total" class="form-control" value="0" required>
   </div>
 
   <?php if($pedido){ ?>
