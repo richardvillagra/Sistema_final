@@ -19,15 +19,41 @@ $form = isset($_GET['form']) ? $_GET['form'] : '';
 </section>
 <section class="content"><div class="box box-primary"><div class="box-body">
 <form method="post" action="modules/presupuestos/proces.php?act=insert">
+<?php 
+// Método para generar código
+  $query_id = mysqli_query($mysqli, "SELECT MAX(cod_presu) as id FROM presupuesto")
+  or die ('error'.mysqli_error($mysqli));
+  $count = mysqli_num_rows($query_id);
+  if($count <> 0){
+      $data_id = mysqli_fetch_assoc($query_id);
+      $codigo = $data_id['id']+1;
+  } else{
+      $codigo=1;
+  }
+  ?>
   
 <div class="form-group">
     <label>Codigo</label>
-  <input name="cod_presu" class="form-control" required>
+  <input name="codigo" class="form-control" value="<?php echo $codigo; ?>" readonly>
 </div>
+
+
+<?php 
+// Método para generar código
+  $query_id = mysqli_query($mysqli, "SELECT MAX(cod_pedido) as id FROM presupuesto")
+  or die ('error'.mysqli_error($mysqli));
+  $count = mysqli_num_rows($query_id);
+  if($count <> 0){
+      $data_id = mysqli_fetch_assoc($query_id);
+      $codigo_ped = $data_id['id']+1;
+  } else{
+      $codigo_ped=1;
+  }
+  ?>
 
 <div class="form-group">
     <label>Nro Pedido</label>
-  <input name="cod_pedido" class="form-control" required>
+  <input name="cod_pedido" class="form-control" value="<?php echo $codigo_ped; ?>" readonly>
 </div>
   
   <div class="form-group">
@@ -41,9 +67,22 @@ $form = isset($_GET['form']) ? $_GET['form'] : '';
     </select>
   </div>
 
+  <?php 
+// Método para generar código
+  $query_id = mysqli_query($mysqli, "SELECT MAX(nro_presu) as id FROM presupuesto")
+  or die ('error'.mysqli_error($mysqli));
+  $count = mysqli_num_rows($query_id);
+  if($count <> 0){
+      $data_id = mysqli_fetch_assoc($query_id);
+      $nro_presu = $data_id['id']+1;
+  } else{
+      $nro_presu=1;
+  }
+  ?>
+
   <div class="form-group">
     <label>Nro Presupuesto</label>
-    <input name="nro_presupuesto" class="form-control" required>
+    <input name="nro_presupuesto" class="form-control" value="<?php echo $nro_presu; ?>" readonly>
   </div>
 
   <div class="form-group">

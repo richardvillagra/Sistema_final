@@ -10,21 +10,21 @@
     else{
         if($_GET['act']=='insert'){
             if(isset($_POST['Guardar'])){
-                $cod_presupuesto = $_POST['cod_presu'];
+                $codigo = $_POST['codigo'];
                 $cod_pedido = $_POST['cod_pedido'];
                 $cod_cliente = $_POST['id_cliente'];
-                $nro = $_POST['nro_presu'];
+                $nro_presu = $_POST['nro_presu'];
                 $fecha = $_POST['fecha'];
                 $total = $_POST['total_presu'];
 
                 mysqli_begin_transaction($mysqli);
                 try {
                     $sql = "INSERT INTO presupuesto (cod_presu, cod_pedido, id_cliente, nro_presu, fecha, total_presu)
-                    VALUES ('$cod_presupuesto', '$cod_pedido', $cod_cliente, '$nro', '$fecha', $total)";
+                    VALUES ('$codigo', $cod_pedido, $cod_cliente, '$nro_presu', '$fecha', $total)";
                     if(!mysqli_query($mysqli, $sql)){
                         throw new Exception('Error insert presupuesto: '.mysqli_error($mysqli));
                     }
-                    $cod_presupuesto = mysqli_insert_id($mysqli);
+                    $codigo = mysqli_insert_id($mysqli);
 
                     // Si vino cod_pedido, copiar detalles
                     if(isset($_POST['cod_pedido']) && intval($_POST['cod_pedido'])>0){
@@ -37,8 +37,8 @@
                             $cod_producto = intval($r['cod_producto']);
                             $cantidad = floatval($r['cantidad']);
                             $precio = floatval($r['precio']);
-                            $ins = "INSERT INTO detalle_presupuesto (cod_presupuesto, cod_producto, cantidad, precio)
-                                    VALUES ($cod_presupuesto, $cod_producto, $cantidad, $precio)";
+                            $ins = "INSERT INTO detalle_presupuesto (cod_presu, cod_producto, cantidad, precio)
+                                    VALUES ($codigo, $cod_producto, $cantidad, $precio)";
                             if(!mysqli_query($mysqli, $ins)){
                                 throw new Exception('Error insert detalle_presupuesto: '.mysqli_error($mysqli));
                             }
@@ -59,15 +59,15 @@
         }
 
         // Eliminar presupuesto (ajustado a tabla 'presupuesto')
-        if($_GET['act']== 'delete'){
+        if($_GET['act']== 'anular'){
             if(isset($_GET['cod_presu'])){
                 $codigo = intval($_GET['cod_presu']);
-                $query = mysqli_query($mysqli, "DELETE FROM presupuesto WHERE cod_presupuesto = $codigo") 
+                $query = mysqli_query($mysqli, "DELETE FROM presupuesto WHERE cod_presu = $codigo") 
                 or die('error'.mysqli_error($mysqli));
                 if($query){
-                    header("Location: ../../main.php?module=presupuestos&alert=3");
+                    header("Location: ../../main.php?module=presupuestos&alert=2");
                 }else{
-                    header("Location: ../../main.php?module=presupuestos&alert=4");
+                    header("Location: ../../main.php?module=presupuestos&alert=3");
                 }
             }
         }
@@ -101,7 +101,7 @@
                     $cod_orden = mysqli_insert_id($mysqli);
 
                     // copiar detalles desde detalle_presupuesto -> detalle_orden
-                    $qdet = mysqli_query($mysqli, "SELECT cod_producto, cantidad, precio, subtotal FROM detalle_presupuesto WHERE cod_presupuesto = $codigo");
+                    $qdet = mysqli_query($mysqli, "SELECT cod_producto, cantidad, precio, subtotal FROM detalle_presupuesto WHERE cod_presu = $codigo");
                     if(!$qdet) throw new Exception('Error detalles: '.mysqli_error($mysqli));
                     while($r = mysqli_fetch_assoc($qdet)){
                         $cod_producto = intval($r['cod_producto']);
@@ -114,7 +114,7 @@
                     }
 
                     // actualizar estado del presupuesto a aceptado
-                    $up = mysqli_query($mysqli, "UPDATE presupuesto SET estado = 'aceptado' WHERE cod_presupuesto = $codigo");
+                    $up = mysqli_query($mysqli, "UPDATE presupuesto SET estado = 'aceptado' WHERE cod_presu = $codigo");
                     if(!$up) throw new Exception('Error update presupuesto: '.mysqli_error($mysqli));
 
                     mysqli_commit($mysqli);

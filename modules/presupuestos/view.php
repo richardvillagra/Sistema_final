@@ -69,12 +69,8 @@
                       onclick="return confirm('¿Aceptar el presupuesto <?php echo $r['nro_presu']; ?>?');">
                       <i class='fa fa-check'></i>
                     </a>
-                    <a class='btn btn-info btn-sm' 
-                    href='modules/presupuestos/vista.php?act=vista&cod_presupuesto=<?php echo $r['cod_presu']; ?>'>
-                    <i class='fa fa-eye'></i>
-                    </a>
                     <a class='btn btn-danger btn-sm' 
-                    href='modules/presupuestos/proces.php?act=anular&cod_presupuesto=<?php echo $r['cod_presu']; ?>' 
+                    href='modules/presupuestos/proces.php?act=anular&cod_presu=<?php echo $r['cod_presu']; ?>' 
                     onclick="return confirm('¿Anular presupuesto?');">
                     <i class='glyphicon glyphicon-trash'></i>
                     </a>

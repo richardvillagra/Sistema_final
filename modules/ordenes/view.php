@@ -8,7 +8,7 @@
         <li class="active"><a href="?module=ordenes">ordenes</a></li>
     </ol><br><hr>
     <h1><i class="fa fa-file-text-o"></i> Ordenes de Compra
-        <a class="btn btn-primary btn-social pull-right" href="?module=ordenes&form=add" title="Agregar Orden" data-toggle="tooltip">
+        <a class="btn btn-primary btn-social pull-right" href="?module=form_ordenes&form=add" title="Agregar Orden" data-toggle="tooltip">
             <i class="fa fa-plus"></i>Agregar Orden
         </a>
     </h1>
@@ -81,8 +81,16 @@
                             <td>{$r['total']}</td>
                             <td>{$r['estado']}</td>
                             <td>
-                            <a class='btn btn-info btn-sm' href='?module=ordenes&form=view&cod_orden={$r['cod_orden']}'><i class='fa fa-eye'></i></a>
-                            <a class='btn btn-danger btn-sm' href='modules/ordenes/proces.php?act=anular&cod_orden={$r['cod_orden']}' onclick=\"return confirm('¿Anular orden?');\"><i class='glyphicon glyphicon-trash'></i></a>
+                            <a data-toggle='tooltip' data-placement='top' title='Aceptar Orden' class='btn btn-success btn-sm' 
+                            href='main.php?module=compras&form_compras=aceptar&cod_orden={$r['cod_orden']}' 
+                            onclick=\"return confirm('¿Aceptar la orden {$r['nro_orden']}?');\">
+                            <i class='fa fa-check'></i>
+                            </a>
+                            <a class='btn btn-danger btn-sm' 
+                            href='modules/ordenes/proces.php?act=anular&cod_orden={$r['cod_orden']}' 
+                            onclick=\"return confirm('¿Anular orden?');\">
+                            <i class='glyphicon glyphicon-trash'></i>
+                            </a>
                             </td>
                         </tr>";
                 }
